@@ -1,0 +1,48 @@
+MS SQL Server Management Studio 
+
+/* Before I start, I make sure the option to add line numbers to the New Query window for SQL Server is on by clicking: 
+
+Under Tools, Options, Text Editor, All Languages */   
+
+/* DATABASE BUILDING & BACKUP */
+
+USE AdventureWorks
+SELECT * from Person.Contact
+
+CREATE DATABASE Weio 
+CREATE TABLE Cities(CityID int primary key, City nvarchar(30), Population bigint) 
+ DROP TABLE dbo.Cities_Details; */
+
+
+/* Create a new login for new user, Bob, including examples in how to solve with change requests */
+
+CREATE LOGIN Bob WITH PASSWORD ='ABCxyz4321' 
+
+ALTER LOGIN Bob WITH PASSWORD ='ABCxyz1234'
+
+DROP LOGIN Bob 
+
+/* TABLE BUILDING MANAGEMENT*/
+-- Insert name of database into the USE command below, save and execute
+--		all commands as a single batch.
+
+USE Weio;
+GO
+
+INSERT INTO Cities
+VALUES (1, 'Seattle', 520000),
+	   (2, 'Redmond', 110000),
+	   (3, 'Kirkland', 85000),
+	   (4, 'Bothell', 70000); 
+
+
+-- To Backup database--
+
+BACKUP DATABASE Weio
+TO DISK = 'C:\tmp\Weio.bak'
+GO
+
+--A backup can help to restore Database after a DROP
+--How? Right click on Database -> Restore -> Device -> Choose File (it has the backup database name)
+
+
